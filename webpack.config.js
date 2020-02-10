@@ -21,10 +21,18 @@ const sharedConfig = {
             }
         ]
     },
-    resolve: [".js", ".jsx", ".css"],
-    devtool: "source-map"
+    resolve: {
+        extensions: [".js", ".jsx", ".css"],
+    },
+    devtool: "inline-source-map",
+    devServer: {
+        contentBase: path.join(__dirname, "public/"),
+        port: 3000,
+        publicPath: "http://localhost:3000/dist/",
+        hot: true
+    }
 };
 
 module.exports = {
-    sharedConfig
+    ...sharedConfig
 };
